@@ -18,7 +18,6 @@ def classify0(inX, dataSet, labels, k):
 	sqDistances = sqDiffMat.sum(axis=1)
 	distances = sqDistances**0.5
 
-
 	sortedDistIndicies = distances.argsort()
 	classCount = {}
 	for i in range(k):
@@ -113,8 +112,10 @@ def handwritingClassTest():
         classNumStr = int(fileStr.split('_')[0])
         vectorUnderTest = img2vector('testDigits/%s' % fileNameStr)
         classifierResult = classify0(vectorUnderTest, trainingMat, hwLabels, 3)
-        print "the classifier came back with: %d, the real answer is: %d" % (classifierResult, classNumStr)
-        if (classifierResult != classNumStr): errorCount += 1.0
+        
+        if (classifierResult != classNumStr): 
+        	errorCount += 1.0
+        	print "%s: the classifier came back with: %d, the real answer is: %d" % (fileNameStr, classifierResult, classNumStr)
 
     print "\nthe total number of errors is: %d" % errorCount
     print "\nthe total error rate is: %f" % (errorCount / float(mTest))
