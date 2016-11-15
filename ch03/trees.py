@@ -107,6 +107,14 @@ def createTree(dataSet, labels):
 	return myTree
 
 
-
-
-
+def classify(inputTree, featLables, testVec):
+	firstStr = inputTree.keys()[0]
+	secondDict = inputTree[firstStr]
+	featIndex = featLables.index(firstStr)
+	for key in secondDict.keys():
+		if testVec[featIndex] == key:
+			if type(secondDict[key]).__name__ = 'dict':
+				classLabel = classify(secondDict[key], featLables, testVec)
+			else:
+				classLabel = secondDict[key]
+	return classLabel
