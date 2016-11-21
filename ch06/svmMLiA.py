@@ -78,8 +78,7 @@ def kernelTrans(X, A, kTup): #calc the kernel or transform data to a higher dime
             deltaRow = X[j,:] - A
             K[j] = deltaRow*deltaRow.T
         K = exp(K/(-1*kTup[1]**2)) #divide in NumPy is element-wise not matrix like Matlab
-    else: raise NameError('Houston We Have a Problem -- \
-    That Kernel is not recognized')
+    else: raise NameError('Houston We Have a Problem -- That Kernel is not recognized')
     return K
 
 class optStruct:
